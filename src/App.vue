@@ -3,15 +3,16 @@
     <div class="container">
         <h1>待办事项</h1>
         <todo-add :tid="todos.length" @addOneTodo="addTodo" />
-        <todo-filter />
-        <todo-list :todos="todos" />
+        <todo-filter :selected="filter" @select-filter="filter = $event" />
+        <todo-list :todos="filteredTodos" />
     </div>
 </main>
 </template>
 
 <script>
 import {
-    ref
+    ref,
+    computed
 } from "vue";
 import TodoAdd from "./components/TodoAdd.vue";
 import TodoFilter from "./components/TodoFilter.vue";
@@ -25,10 +26,23 @@ export default {
         const addTodo = (todo) => {
             todos.value.push(todo.value);
         };
+        const filter = ref("all");
+        const filteredTodos = computed(() => {
+            switch (filter.value) {
+                case "done":
+                    return todos.value.filter((todo) => todo.complete);
+                case "todo":
+                    return todos.value.filter((todo) => !todo.complete);
+                default:
+                    return todos.value;
+            }
+        });
 
         return {
             todos,
             addTodo,
+            filter,
+            filteredTodos,
         };
     },
     components: {
