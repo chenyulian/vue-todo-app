@@ -4,18 +4,40 @@
         <h1>待办事项</h1>
         <todo-add />
         <todo-filter />
-        <todo-list />
+        <todo-list :todos="todos" />
     </div>
 </main>
 </template>
 
 <script>
+import {
+    ref
+} from "vue";
 import TodoAdd from "./components/TodoAdd.vue";
 import TodoFilter from "./components/TodoFilter.vue";
 import TodoItem from "./components/TodoItem.vue";
 import TodoList from "./components/TodoList.vue";
 export default {
     name: "App",
+    setup() {
+        // 存储todolist
+        const todos = ref([{
+                content: "123",
+                key: 0
+            },
+            {
+                content: "bobby",
+                key: 1
+            },
+        ]);
+        const addTodo = (todo) => {
+            todos.value.push(todo);
+        };
+
+        return {
+            todos,
+        };
+    },
     components: {
         TodoAdd,
         TodoFilter,
@@ -29,9 +51,10 @@ export default {
 main {
     height: 100vh;
     width: 100vw;
-    display: flex;
-    align-content: center;
-    justify-content: center;
+    display: grid;
+    align-items: start;
+    justify-items: center;
+
     background-color: rgb(203, 210, 240);
 }
 

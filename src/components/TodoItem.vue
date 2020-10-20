@@ -1,8 +1,27 @@
 <template>
 <div class="todo-item">
-    <label><input type="checkbox" />TO DO 组件1<span class="check-button"></span></label>
+    <label><input type="checkbox" />{{ todo.content
+      }}<span class="check-button"></span></label>
 </div>
 </template>
+
+<script>
+export default {
+    props: {
+        todo: {
+            type: Object,
+        },
+    },
+
+    setup(props) {
+        const todo = props.todo;
+
+        return {
+            todo
+        };
+    },
+};
+</script>
 
 <style scoped>
 .todo-item {
