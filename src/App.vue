@@ -56,7 +56,8 @@ export default {
 
 <style scoped>
 main {
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
     width: 100vw;
     display: grid;
     align-items: start;

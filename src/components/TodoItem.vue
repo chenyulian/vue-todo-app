@@ -1,6 +1,6 @@
 <template>
 <div class="todo-item" :class="{ done: todo.complete }">
-    <label><input type="checkbox" @click="emitFinishTodo" />{{ todo.content
+    <label><input type="checkbox" @click="emitFinishTodo" :checked="todo.complete" />{{ todo.content
       }}<span class="check-button"></span></label>
 </div>
 </template>
