@@ -8,4 +8,4 @@
 - [ ] 支持存储功能
 - [ ] 优化代码
 # 预览
-[点击预览](https://serene-hugle-d2e382.netlify.app)
+[点击预览](https://upbeat-neumann-5666fd.netlify.app/)
