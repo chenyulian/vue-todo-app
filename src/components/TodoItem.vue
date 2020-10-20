@@ -1,6 +1,6 @@
 <template>
-<div class="todo-item">
-    <label><input type="checkbox" />{{ todo.content
+<div class="todo-item" :class="{ done: todo.complete }">
+    <label><input type="checkbox" @click="emitFinishTodo" />{{ todo.content
       }}<span class="check-button"></span></label>
 </div>
 </template>
@@ -8,6 +8,15 @@
 <script>
 export default {
     props: ["todo"],
+    setup(props, context) {
+        const emitFinishTodo = () => {
+            context.emit("changeState", !props.todo.complete);
+        };
+
+        return {
+            emitFinishTodo,
+        };
+    },
 };
 </script>
 
@@ -58,5 +67,10 @@ export default {
 
 .todo-item input:checked+span.check-button::after {
     opacity: 1;
+}
+
+.done {
+    text-decoration: line-through;
+    font-style: italic;
 }
 </style>

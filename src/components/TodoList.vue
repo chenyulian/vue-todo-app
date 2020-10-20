@@ -1,7 +1,7 @@
 <template>
 <div class="todo-list">
     <template v-for="todo in todos" :key="todo.id">
-        <todo-item :todo="todo" />
+        <todo-item :todo="todo" @changeState="todo.complete = $event" />
     </template>
 </div>
 </template>
@@ -13,13 +13,6 @@ export default {
         todos: {
             type: Array,
         },
-    },
-    setup(props) {
-        const todos = props.todos;
-
-        return {
-            todos,
-        };
     },
     components: {
         TodoItem,
