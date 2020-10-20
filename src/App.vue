@@ -2,7 +2,7 @@
 <main>
     <div class="container">
         <h1>待办事项</h1>
-        <todo-add />
+        <todo-add :tid="todos.length" @addOneTodo="addTodo" />
         <todo-filter />
         <todo-list :todos="todos" />
     </div>
@@ -21,21 +21,14 @@ export default {
     name: "App",
     setup() {
         // 存储todolist
-        const todos = ref([{
-                content: "123",
-                key: 0
-            },
-            {
-                content: "bobby",
-                key: 1
-            },
-        ]);
+        const todos = ref([]);
         const addTodo = (todo) => {
-            todos.value.push(todo);
+            todos.value.push(todo.value);
         };
 
         return {
             todos,
+            addTodo,
         };
     },
     components: {

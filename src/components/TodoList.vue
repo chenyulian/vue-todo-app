@@ -1,6 +1,6 @@
 <template>
 <div class="todo-list">
-    <template v-for="todo in todos" :key="todo.key">
+    <template v-for="todo in todos" :key="todo.id">
         <todo-item :todo="todo" />
     </template>
 </div>

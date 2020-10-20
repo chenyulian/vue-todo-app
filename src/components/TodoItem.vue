@@ -7,19 +7,7 @@
 
 <script>
 export default {
-    props: {
-        todo: {
-            type: Object,
-        },
-    },
-
-    setup(props) {
-        const todo = props.todo;
-
-        return {
-            todo
-        };
-    },
+    props: ["todo"],
 };
 </script>
 
